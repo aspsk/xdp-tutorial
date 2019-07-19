@@ -1,0 +1,16 @@
+# -*- fill-column: 76; -*-
+#+TITLE: Tutorial: Basic04 - pinning of maps
+#+OPTIONS: ^:nil
+
+* Table of Contents                                                     :TOC:
+- [[#what-you-will-learn-in-this-lesson][What you will learn in this lesson]]
+- [[#assignments][Assignments]]
+  - [[#assignment-1-xxx][Assignment 1: XXX]]
+
+* What you will learn in this lesson
+
+In this lesson you will learn how to use tail calls with XDP programs.
+
+* Assignments
+
+** Assignment 1: XXX
