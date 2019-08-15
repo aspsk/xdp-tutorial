@@ -57,27 +57,6 @@ static const struct option_wrapper long_options[] = {
 #define PATH_MAX 4096
 #endif
 
-int open_bpf_map_file(const char *pin_dir, const char *mapname)
-{
-	char filename[PATH_MAX];
-	int len, fd;
-
-	len = snprintf(filename, PATH_MAX, "%s/%s", pin_dir, mapname);
-	if (len < 0) {
-		fprintf(stderr, "ERR: constructing full mapname path\n");
-		return -1;
-	}
-
-	fd = bpf_obj_get(filename);
-	if (fd < 0) {
-		fprintf(stderr,
-			"WARN: Failed to open bpf map file:%s err(%d):%s\n",
-			filename, errno, strerror(errno));
-		return fd;
-	}
-	return fd;
-}
-
 const char *pin_basedir =  "/sys/fs/bpf";
 
 int main(int argc, char **argv)
@@ -108,7 +87,7 @@ int main(int argc, char **argv)
 		return EXIT_FAIL_OPTION;
 	}
 
-	map_fd = open_bpf_map_file(pin_dir, "progs");
+	map_fd = open_bpf_map_file(pin_dir, "progs", NULL);
 	if (map_fd < 0)
 		return EXIT_FAIL_BPF;
 
